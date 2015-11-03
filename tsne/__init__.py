@@ -5,7 +5,7 @@ import scipy.linalg as la
 from bh_sne import BH_SNE
 
 
-def bh_sne(data, pca_d=None, d=2, perplexity=30., theta=0.5):
+def bh_sne(data, pca_d=None, d=2, perplexity=30., theta=0.5, max_iter=1000):
     """
     Run Barnes-Hut T-SNE on _data_.
 
@@ -39,7 +39,7 @@ def bh_sne(data, pca_d=None, d=2, perplexity=30., theta=0.5):
         X = np.dot(data, u)
 
     tsne = BH_SNE()
-    Y = tsne.run(X, N, X.shape[1], d, perplexity, theta)
+    Y = tsne.run(X, N, X.shape[1], d, max_iter, perplexity, theta)
     return Y
 
 from ._version import get_versions
